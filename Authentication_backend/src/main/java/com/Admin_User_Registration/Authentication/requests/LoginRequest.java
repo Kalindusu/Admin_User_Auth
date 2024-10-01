@@ -2,18 +2,23 @@ package com.Admin_User_Registration.Authentication.requests;
 
 public class LoginRequest {
 
-    private Long id;
+    private String email;
     private String password;
+
+    public LoginRequest(String email, String password) {
+        this.email = email;
+        this.password = password;
+    }
 
     public LoginRequest() {
     }
 
-    public Long getId() {
-        return id;
+    public String getEmail() {
+        return email;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public String getPassword() {
