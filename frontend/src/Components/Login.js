@@ -1,62 +1,67 @@
-import React from 'react'
+import React, { useState } from 'react';
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
+import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 import "./Login.css";
-import { useState } from 'react';
 
 function Login() {
-    const [email,setEmailvalue]=useState("")
-    const [password,setPasswordValue]=useState("")
+   
+    const [email, setEmail] = useState("");  
+    const [password, setPassword] = useState("");
 
-    const setEmail=(e)=>{
-        setEmailvalue(e.target.value);
+    const handleSubmit = async (e) => {
+        e.preventDefault(); 
 
-    }
-    const setPassword=(e)=>{
-        setPasswordValue(e.target.value);
-    }
-    
-    const handleSubmit=(e)=>{
-        //prevebt default
-        e.preventDefault();
-        //api call
-        console.log(email,password)
+        const data = {
+            email: email,
+            password: password
+        };
 
-        
+        try {
+            const response = await axios.post("http://localhost:8080/loginUser", data);  
 
-    }
-  return (
-    <div className="center-form">
-      <h1>Login From Here </h1>
-      <form onSubmit={handleSubmit}>
-       
-        <Form.Group className="mb-3" controlId="formBasicEmail">
-          <Form.Control
-            type="email"
-            placeholder="Enter Email"
-            name="email"
-            value={email}
-            onChange={setEmail}
-          />
-        </Form.Group>
-        <Form.Group className="mb-3" controlId="formBasicPassword">
-          <Form.Control
-            type="password"
-            placeholder="Enter Password"
-            name="password"
-            value={password}
-            onChange={setPassword}
-          />
-        </Form.Group>
+            if (!response.data === "false") {
+                alert("Invalid Credentials");
+            } else {
+                alert("Login Successful");
+                
+            }
+        } catch (error) {
+            alert("Something went wrong");
+            console.error(error);
+        }
+    };
 
-        <Button variant="primary" type="submit">Login</Button>
-        <br/><br/>
-        <p>Don't have an account ? <a href="/register">Register</a></p>
+    return (
+        <div className="center-form">
+            <h1>Login From Here</h1>
+            <form onSubmit={handleSubmit}>
+                <Form.Group className="mb-3" controlId="formBasicEmail">
+                    <Form.Control
+                        type="email"
+                        placeholder="Enter Email"
+                        name="email"
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}  // Correct handler
+                    />
+                </Form.Group>
+                <Form.Group className="mb-3" controlId="formBasicPassword">
+                    <Form.Control
+                        type="password"
+                        placeholder="Enter Password"
+                        name="password"
+                        value={password}
+                        onChange={(e) => setPassword(e.target.value)}  // Correct handler
+                    />
+                </Form.Group>
 
-
-      </form>
-    </div>
-  )
+                <Button variant="primary" type="submit">Login</Button>
+                <br /><br />
+                <p>Don't have an account? <a href="/register">Register</a></p>
+            </form>
+        </div>
+    );
 }
 
-export default Login
+export default Login;

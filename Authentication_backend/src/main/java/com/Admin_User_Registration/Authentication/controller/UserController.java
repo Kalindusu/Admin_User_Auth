@@ -17,11 +17,13 @@ public class UserController {
     private UserService userService;
 
     @PostMapping("/add")
+    @CrossOrigin(origins = "http://localhost:3000/")
     public  UserDTO saveUser (@RequestBody UserDTO userDTO){
         return userService.saveUser(userDTO);
     }
 
     @PostMapping("/loginUser")
+    @CrossOrigin(origins = "http://localhost:3000/")
     public Boolean loginUser(@RequestBody LoginRequest loginRequest){
 return  userService.loginUser(loginRequest);
     }
