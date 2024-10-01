@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
+
 import "./Login.css";
 
 function Login() {
@@ -43,7 +43,7 @@ function Login() {
                         placeholder="Enter Email"
                         name="email"
                         value={email}
-                        onChange={(e) => setEmail(e.target.value)}  // Correct handler
+                        onChange={(e) => setEmail(e.target.value)}  
                     />
                 </Form.Group>
                 <Form.Group className="mb-3" controlId="formBasicPassword">
@@ -52,7 +52,7 @@ function Login() {
                         placeholder="Enter Password"
                         name="password"
                         value={password}
-                        onChange={(e) => setPassword(e.target.value)}  // Correct handler
+                        onChange={(e) => setPassword(e.target.value)}  
                     />
                 </Form.Group>
 

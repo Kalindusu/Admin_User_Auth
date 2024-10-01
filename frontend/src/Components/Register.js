@@ -3,8 +3,12 @@ import './Login.css';
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import { Navigate } from 'react-router-dom';
+import axios from 'axios';
+import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 function Register() {
+  const Navigate = useNavigate();
   const [register, setRegister] = useState({
     name: "",
     email: "",
@@ -24,10 +28,10 @@ const handleSubmit = async (e) => {
   console.log(register);
 
   try{
-      const response = await axios.post('http://localhost:8082/addUser', register);
+      const response = await axios.post('http://localhost:8080/add', register);
       console.log(response.data);
       alert("User added successfully");
-      Navigate('/login');
+      Navigate('/');
 
  } catch(error){
   console.log(error);
