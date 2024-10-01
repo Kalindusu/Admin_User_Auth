@@ -25,7 +25,7 @@ public class UserService {
     }
 
     public  Boolean loginUser(LoginRequest loginRequest){
-        Optional<User> user=userRepo.findById(loginRequest.getId());
+        Optional<User> user= userRepo.findByEmail(loginRequest.getEmail());
         User user1=user.get();
 
         if(user1==null){
