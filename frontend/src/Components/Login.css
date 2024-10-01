@@ -21,3 +21,7 @@
     margin-bottom: 20px;
     padding:10px;
 }
+.center-form Form a{
+    text-decoration: none;
+    color:blue;
+}
