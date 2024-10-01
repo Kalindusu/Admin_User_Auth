@@ -3,7 +3,7 @@ package com.Admin_User_Registration.Authentication.model;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "users")
+@Table(name = "users",uniqueConstraints = @UniqueConstraint(columnNames = "email"))
 public class User {
 
     @Id
