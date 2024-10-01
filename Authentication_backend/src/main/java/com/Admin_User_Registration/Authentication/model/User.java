@@ -12,29 +12,12 @@ public class User {
     private Long id;
     private String email;
     private  String password;
-    private String role;
     private String name;
 
-    public User(Long id, String email, String password, String role, String name) {
-        this.id = id;
+    public User(String email, String password, String name) {
         this.email = email;
         this.password = password;
-        this.role = role;
         this.name = name;
-    }
-
-    public User() {
-    }
-
-    public User(String email, String password, String role, String name) {
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
     }
 
     public String getEmail() {
@@ -53,14 +36,6 @@ public class User {
         this.password = password;
     }
 
-    public String getRole() {
-        return role;
-    }
-
-    public void setRole(String role) {
-        this.role = role;
-    }
-
     public String getName() {
         return name;
     }
@@ -69,14 +44,6 @@ public class User {
         this.name = name;
     }
 
-    @Override
-    public String toString() {
-        return "User{" +
-                "id=" + id +
-                ", email='" + email + '\'' +
-                ", password='" + password + '\'' +
-                ", role='" + role + '\'' +
-                ", name='" + name + '\'' +
-                '}';
+    public User() {
     }
 }
