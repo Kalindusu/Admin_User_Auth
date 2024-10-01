@@ -2,6 +2,7 @@ package com.Admin_User_Registration.Authentication.controller;
 
 import com.Admin_User_Registration.Authentication.dto.UserDTO;
 import com.Admin_User_Registration.Authentication.model.User;
+import com.Admin_User_Registration.Authentication.requests.LoginRequest;
 import com.Admin_User_Registration.Authentication.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -18,6 +19,11 @@ public class UserController {
     @PostMapping("/add")
     public  UserDTO saveUser (@RequestBody UserDTO userDTO){
         return userService.saveUser(userDTO);
+    }
+
+    @PostMapping("/loginUser")
+    public Boolean loginUser(@RequestBody LoginRequest loginRequest){
+return  userService.loginUser(loginRequest);
     }
     }
 
