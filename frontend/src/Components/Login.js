@@ -2,10 +2,13 @@ import React, { useState } from 'react';
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
+import { Navigate, useNavigate } from 'react-router-dom';
+
 import "./Login.css";
 
+
 function Login() {
+  const   Navigate=useNavigate();
    
     const [email, setEmail] = useState("");  
     const [password, setPassword] = useState("");
@@ -24,9 +27,10 @@ function Login() {
             if (!response.data === "false") {
                 alert("Invalid Credentials");
             } else {
-                alert("Login Successful");
-                
+                alert("Login Successful"); 
+                Navigate("/home");
             }
+           
         } catch (error) {
             alert("Something went wrong");
             console.error(error);
@@ -43,7 +47,7 @@ function Login() {
                         placeholder="Enter Email"
                         name="email"
                         value={email}
-                        onChange={(e) => setEmail(e.target.value)}  // Correct handler
+                        onChange={(e) => setEmail(e.target.value)}  
                     />
                 </Form.Group>
                 <Form.Group className="mb-3" controlId="formBasicPassword">
@@ -52,7 +56,7 @@ function Login() {
                         placeholder="Enter Password"
                         name="password"
                         value={password}
-                        onChange={(e) => setPassword(e.target.value)}  // Correct handler
+                        onChange={(e) => setPassword(e.target.value)}  
                     />
                 </Form.Group>
 
